@@ -30,18 +30,19 @@
   ],
   "dependencies": {
     "@types/react": "^16.9.49",
+    "fs-extra": "^9.0.1",
     "react": "^16.13.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "build:lib": "npm run build:babel && npm run build:types && node ./scripts/copyTS.js",
-    "build:babel": "concurrently \"npm run build:babel:esm && npm run build:babel:umd\" \"npm run build:babel:cjs\"",
+    "build:lib": "yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
+    "build:babel": "concurrently \"yarn build:babel:esm && yarn build:babel:umd\" \"yarn build:babel:cjs\"",
     "build:babel:cjs": "BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",
     "build:babel:esm": "BABEL_ENV=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
     "build:babel:umd": "BABEL_ENV=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
     "build:types": "tsc -p tsconfig.gen-dts.json",
     "clean": "rimraf dist",
-    "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose"
+    "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -60,7 +61,11 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
+    "@babel/plugin-transform-typescript": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-plugin-typescript-to-proptypes": "^1.4.1",
     "concurrently": "^5.3.0"
