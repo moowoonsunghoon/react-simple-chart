@@ -1,7 +1,30 @@
 {
   "name": "react-simple-chart",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "easy make chart",
+  "keywords": [
+    "chart",
+    "simple",
+    "react-chart"
+  ],
+  "homepage": "https://github.com/moowoonsunghoon/react-simple-chart",
+  "bugs": {
+    "url": "https://github.com/moowoonsunghoon/react-simple-chart",
+    "email": "msh1342@naver.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "SungHoon Moon",
+    "email": "msh1342@naver.com"
+  },
+  "main": "src/ReactSimpleChart.tsx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moowoonsunghoon/react-simple-chart"
+  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -19,7 +42,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:lib": "npm run build:babel && npm run build:types && node ./scripts/copyTS.js",
+    "build:babel": "concurrently \"npm run build:babel:esm && npm run build:babel:umd\" \"npm run build:babel:cjs\"",
+    "build:babel:cjs": "BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",
+    "build:babel:esm": "BABEL_ENV=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
+    "build:babel:umd": "BABEL_ENV=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
+    "build:types": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +66,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-typescript-to-proptypes": "^1.4.1",
+    "concurrently": "^5.3.0"
   }
 }
