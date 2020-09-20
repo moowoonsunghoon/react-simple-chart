@@ -1,11 +1,12 @@
 {
   "name": "react-simple-chart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "easy make chart",
   "keywords": [
     "chart",
     "simple",
-    "react-chart"
+    "react-chart",
+    "react-simple-chart"
   ],
   "homepage": "https://github.com/moowoonsunghoon/react-simple-chart",
   "bugs": {
@@ -17,7 +18,9 @@
     "name": "SungHoon Moon",
     "email": "msh1342@naver.com"
   },
-  "main": "src/ReactSimpleChart.tsx",
+  "main": "dist/js/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/js/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/moowoonsunghoon/react-simple-chart"
@@ -26,29 +29,17 @@
     "dist"
   ],
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.62",
     "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "build:lib": "npm run build:babel && npm run build:types && node ./scripts/copyTS.js",
     "build:babel": "concurrently \"npm run build:babel:esm && npm run build:babel:umd\" \"npm run build:babel:cjs\"",
     "build:babel:cjs": "BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",
     "build:babel:esm": "BABEL_ENV=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
     "build:babel:umd": "BABEL_ENV=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
-    "build:types": "tsc -p tsconfig.json",
+    "build:types": "tsc -p tsconfig.gen-dts.json",
     "clean": "rimraf dist",
     "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose"
   },
