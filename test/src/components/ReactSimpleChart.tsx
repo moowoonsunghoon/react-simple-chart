@@ -124,8 +124,9 @@ const ReactSimpleChart: React.FC<{
                   transform: "translateX(-50%)",
                 }}
               >
-                {datas.map((data) => (
+                {datas.map((data, index) => (
                   <div
+                    key={index}
                     style={{
                       display: "flex",
                       justifyContent: "center",
