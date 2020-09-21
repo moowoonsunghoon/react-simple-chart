@@ -32,8 +32,8 @@ const ReactSimpleChart: React.FC<{
   return (
     <>
       <div style={{ display: "flex", flexWrap: "wrap", marginBottom: 20 }}>
-        {datas.map((data) => (
-          <div style={{ display: "flex", marginRight: 10 }}>
+        {datas.map((data, index) => (
+          <div key={index} style={{ display: "flex", marginRight: 10 }}>
             <div
               style={{
                 width: 20,
@@ -124,8 +124,9 @@ const ReactSimpleChart: React.FC<{
                   transform: "translateX(-50%)",
                 }}
               >
-                {datas.map((data) => (
+                {datas.map((data, index) => (
                   <div
+                    key={index}
                     style={{
                       display: "flex",
                       justifyContent: "center",

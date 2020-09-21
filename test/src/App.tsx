@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import ReactSimpleChart from "./components/ReactSimpleChart";
+//import ReactSimpleChart from "./components/ReactSimpleChart";
+import ReactSimpleChart from "react-simple-chart";
 
 function App() {
   return (

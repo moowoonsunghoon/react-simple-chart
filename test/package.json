@@ -13,6 +13,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
+    "react-simple-chart": "^1.0.10",
     "typescript": "~3.7.2"
   },
   "scripts": {
