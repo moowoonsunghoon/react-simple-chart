@@ -12,6 +12,8 @@ or
 yarn add react-simple-chart
 ```
 
+## Usage
+
 ```js
 import ReactSimpleChart from "react-simple-chart";
 
